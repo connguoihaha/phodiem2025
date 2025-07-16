@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 Phổ điểm tổ hợp THPT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Highcharts -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1><i class="bi bi-bar-chart-fill"></i> Phổ điểm tổ hợp THPT</h1>
+      <p>Tra cứu và phân tích phổ điểm các tổ hợp môn thi THPT Quốc gia</p>
+    </div>
+
+    <!-- Controls -->
+    <div class="card">
+      <div class="card-header">
+        <i class="bi bi-sliders"></i> Bảng điều khiển
+      </div>
+      <div class="card-body">
+        <div class="row align-items-end">
+          <!-- Chọn khối -->
+          <div class="col-md-4 mb-3">
+            <label for="blockSelect" class="form-label">
+              <i class="bi bi-grid-3x3-gap-fill"></i> Chọn khối:
+            </label>
+            <select id="blockSelect" class="form-select" onchange="updateComboOptions()">
+              <option value="">-- Chọn khối --</option>
+              <option value="A">Khối A</option>
+              <option value="B">Khối B</option>
+              <option value="C">Khối C</option>
+              <option value="D">Khối D</option>
+            </select>
+          </div>
+
+          <!-- Chọn mã tổ hợp -->
+          <div class="col-md-4 mb-3">
+            <label for="comboCode" class="form-label">
+              <i class="bi bi-search"></i> Chọn mã tổ hợp:
+            </label>
+            <select id="comboCode" class="form-select">
+              <option value="">-- Chọn tổ hợp --</option>
+            </select>
+          </div>
+
+          <!-- Nút hiển thị -->
+          <div class="col-md-4 mb-3">
+            <button class="btn btn-primary w-100" onclick="renderSelected()">
+              <i class="bi bi-graph-up"></i> Hiển thị phổ điểm
+            </button>
+          </div>
+
+          <!-- Phân tích điểm -->
+          <div class="row mt-3 d-none" id="inputScoreSection">
+            <div class="col-md-6">
+              <label for="inputScore" class="form-label">
+                <i class="bi bi-pencil-square"></i> Nhập điểm tổ hợp:
+              </label>
+              <input type="number" step="0.01" min="0" max="30" id="inputScore" class="form-control" style="background-color: #1e293b; color: #f1f5f9;" placeholder="Nhập điểm...">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label opacity-0">.</label> <!-- để giữ nút cùng hàng -->
+              <button class="btn btn-success w-100" onclick="analyzeInputScore()">
+                <i class="bi bi-search"></i> Phân tích điểm
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Alert -->
+    <div id="alert" class="alert alert-info d-none" role="alert">
+      <i class="bi bi-info-circle"></i> Đang tải dữ liệu...
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <div id="chart">
+        <div class="chart-placeholder">
+          <i class="bi bi-bar-chart"></i>
+          <p>Chọn mã tổ hợp để hiển thị biểu đồ phổ điểm</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Table -->
+    <div id="statsSection" class="d-none">
+      <div class="card">
+        <div class="card-header">
+          <i class="bi bi-table"></i> Thống kê chi tiết
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><i class="bi bi-hash"></i> Chỉ số</th>
+                  <th><i class="bi bi-calculator"></i> Giá trị</th>
+                  <th><i class="bi bi-info-circle"></i> Mô tả</th>
+                </tr>
+              </thead>
+              <tbody id="statsTable">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="script.js"></script>
+
+</body>
+</html>
