@@ -196,6 +196,14 @@ input.form-control, .btn {
     vertical-align: middle;
 }
 
+td.column-label {
+  color: white;
+}
+
+td.column-desc {
+  color: white;
+}
+
 .table tbody tr:hover {
     background-color: var(--bg-light);
 }
@@ -210,12 +218,12 @@ input.form-control, .btn {
     font-size: 1.1rem;
 }
 
-.stat-count { color: var(--primary-light); }
-.stat-mean { color: var(--success); }
+.stat-count { color: var(--warning); }
+.stat-mean { color: var(--secondary); }
 .stat-median { color: var(--secondary); }
-.stat-min { color: var(--warning); }
-.stat-max { color: var(--danger); }
-.stat-std { color: var(--text-primary); }
+.stat-min { color: var(--danger); }
+.stat-max { color: var(--success); }
+.stat-std { color: var(--secondary); }
 
 /* Alert */
 .alert {

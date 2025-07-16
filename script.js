@@ -125,7 +125,7 @@ function renderSelected() {
             dataLabels: {
             enabled: true,
             style: { 
-                color: '#000000', 
+                color: '#ffffff', 
                 fontSize: '11px',
                 fontWeight: '600',
                 textOutline: 'none'
@@ -216,12 +216,13 @@ function renderStatsTable(stats, code) {
     ];
 
     statsTable.innerHTML = statsData.map(stat => `
-    <tr>
-        <td><strong>${stat.label}</strong></td>
-        <td><span class="stat-value ${stat.class}">${stat.value}</span></td>
-        <td class="text-muted">${stat.description}</td>
-    </tr>
+        <tr>
+            <td class="column-label"><strong>${stat.label}</strong></td>
+            <td><span class="stat-value ${stat.class}">${stat.value}</span></td>
+            <td class="column-desc">${stat.description}</td>
+        </tr>
     `).join('');
+
 
     statsSection.classList.remove('d-none');
 }
